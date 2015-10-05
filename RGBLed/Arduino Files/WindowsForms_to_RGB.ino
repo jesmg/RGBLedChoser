@@ -30,17 +30,22 @@ void setup() {
         Serial.begin(9600);
 }
 
-String color=0;
+String color = "";
 
-void loop() {
-      if(Serial.available()) {
-              int i = 0;
-              while (i<9) {
-                color += Serial.read();
-                i++;
-              }
-              pixels.setPixelColor(0, pixels.Color(color.substring(0, 3).toInt(), color.substring(3, 6).toInt(), color.substring(6, 9).toInt()));
+void loop() { 
+         if(Serial.available()){
+            String red = Serial.readStringUntil('\n');
+            String green =  Serial.readStringUntil('\n');
+            String blue =  Serial.readStringUntil('\n');
+             int r = red.toInt();
+              int g = green.toInt();
+              int b = blue.toInt();
+               
+              pixels.setPixelColor(0, pixels.Color(r, g, b));
               pixels.show();
+         }
+             
+             
       }
 
-}
+

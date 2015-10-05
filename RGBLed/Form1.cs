@@ -29,7 +29,9 @@ namespace RGBLed
             color.AllowFullOpen = true;
             color.AnyColor = true;
             color.ShowDialog();
-            serial.Write(color.Color.R.ToString()+color.Color.G.ToString()+color.Color.B.ToString());
+            serial.WriteLine(color.Color.R.ToString());
+            serial.WriteLine(color.Color.G.ToString());
+            serial.WriteLine(color.Color.B.ToString());
         }
     }
 }
